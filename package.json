@@ -94,13 +94,13 @@
   "main": "eslint.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmsjunior87/streamflow-kids-playtime.git"
+    "url": "git+https://github.com/jmsjunior87/streamflex.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jmsjunior87/streamflow-kids-playtime/issues"
+    "url": "https://github.com/jmsjunior87/streamflex/issues"
   },
-  "homepage": "https://github.com/jmsjunior87/streamflow-kids-playtime#readme"
+  "homepage": "https://github.com/jmsjunior87/streamflex#readme"
 }
