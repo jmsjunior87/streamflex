@@ -10,7 +10,8 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -90,7 +91,7 @@
     "typescript-eslint": "^8.0.1",
     "vite": "^7.1.10"
   },
-  "description": "StreamFlex Kids Video Streaming App",
+  "description": "StreamFlow Kids Video Streaming App",
   "main": "eslint.config.js",
   "repository": {
     "type": "git",
@@ -102,5 +103,5 @@
   "bugs": {
     "url": "https://github.com/jmsjunior87/streamflex/issues"
   },
-  "homepage": "https://github.com/jmsjunior87/streamflex#readme"
+  "homepage": "https://github.com/jmsjunior87/streamflex"
 }

@@ -1,5 +1,6 @@
 
 import { Heart, Clock, Star } from 'lucide-react';
+import { getFallbackThumbnailUrl } from '@/lib/utils';
 
 interface Video {
   id: string;
@@ -32,12 +33,12 @@ export const FavoritesPage = ({
           <div className="w-12 h-12 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center">
             <Heart className="w-6 h-6 text-white fill-current" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             My Favorites
           </h2>
         </div>
         
-        <p className="text-gray-600 text-lg">
+        <p className="text-muted-foreground text-lg">
           {videos.length === 0 
             ? "No favorites yet! Start adding videos you love." 
             : `${videos.length} favorite video${videos.length !== 1 ? 's' : ''}`
@@ -47,11 +48,11 @@ export const FavoritesPage = ({
       
       {videos.length === 0 ? (
         <div className="text-center py-16">
-          <div className="w-32 h-32 bg-gradient-to-br from-pink-100 to-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-32 h-32 bg-gradient-to-br from-pink-100 to-red-100 dark:from-pink-950 dark:to-red-950 rounded-full flex items-center justify-center mx-auto mb-6">
             <Heart className="w-16 h-16 text-pink-400" />
           </div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-3">No favorites yet!</h3>
-          <p className="text-gray-600 text-lg max-w-md mx-auto">
+          <h3 className="text-2xl font-bold text-foreground mb-3">No favorites yet!</h3>
+          <p className="text-muted-foreground text-lg max-w-md mx-auto">
             Start exploring videos and tap the heart icon to add them to your favorites collection.
           </p>
         </div>
@@ -67,6 +68,13 @@ export const FavoritesPage = ({
                 <img
                   src={video.externalThumbnail}
                   alt={video.title}
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    const nextSrc = getFallbackThumbnailUrl(event.currentTarget.src);
+                    if (nextSrc !== event.currentTarget.src) {
+                      event.currentTarget.src = nextSrc;
+                    }
+                  }}
                   className="w-full h-32 md:h-40 object-cover"
                 />
                 
@@ -102,10 +110,10 @@ export const FavoritesPage = ({
               </div>
               
               <div className="space-y-1">
-                <h4 className="font-semibold text-lg text-gray-800 group-hover:text-pink-600 transition-colors line-clamp-2">
+                <h4 className="font-semibold text-lg text-foreground group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors line-clamp-2">
                   {video.title}
                 </h4>
-                <p className="text-sm text-gray-600 line-clamp-1">
+                <p className="text-sm text-muted-foreground line-clamp-1">
                   {video.category}
                 </p>
               </div>

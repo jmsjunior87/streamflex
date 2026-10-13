@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Heart, Clock, Search } from 'lucide-react';
+import { getFallbackThumbnailUrl } from '@/lib/utils';
 
 interface Video {
   id: string;
@@ -46,18 +47,18 @@ export const SearchPage = ({
   return (
     <div className="pt-6 md:pt-0 px-4 md:px-8">
       <div className="mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
           {searchQuery ? `Search Results for "${searchQuery}"` : 'Browse All Videos'}
         </h2>
         
         {/* Filters */}
         <div className="flex flex-wrap gap-4 mb-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-600">Category</label>
+            <label className="text-sm font-medium text-muted-foreground">Category</label>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 border-2 border-gray-200 rounded-full focus:border-blue-400 focus:outline-none"
+              className="px-4 py-2 border-2 border-border bg-background text-foreground rounded-full focus:border-blue-400 focus:outline-none"
             >
               {categories.map(category => (
                 <option key={category} value={category}>{category}</option>
@@ -66,11 +67,11 @@ export const SearchPage = ({
           </div>
           
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-600">Age Rating</label>
+            <label className="text-sm font-medium text-muted-foreground">Age Rating</label>
             <select
               value={selectedAge}
               onChange={(e) => setSelectedAge(e.target.value)}
-              className="px-4 py-2 border-2 border-gray-200 rounded-full focus:border-blue-400 focus:outline-none"
+              className="px-4 py-2 border-2 border-border bg-background text-foreground rounded-full focus:border-blue-400 focus:outline-none"
             >
               {ageRatings.map(age => (
                 <option key={age} value={age}>{age}</option>
@@ -79,18 +80,18 @@ export const SearchPage = ({
           </div>
         </div>
         
-        <p className="text-gray-600">
+        <p className="text-muted-foreground">
           {filteredVideos.length} video{filteredVideos.length !== 1 ? 's' : ''} found
         </p>
       </div>
       
       {filteredVideos.length === 0 ? (
         <div className="text-center py-16">
-          <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-6">
-            <Search className="w-12 h-12 text-gray-400" />
+          <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6">
+            <Search className="w-12 h-12 text-muted-foreground" />
           </div>
-          <h3 className="text-2xl font-bold text-gray-800 mb-3">No videos found</h3>
-          <p className="text-gray-600 text-lg">
+          <h3 className="text-2xl font-bold text-foreground mb-3">No videos found</h3>
+          <p className="text-muted-foreground text-lg">
             Try adjusting your search or filters to find what you're looking for!
           </p>
         </div>
@@ -106,6 +107,13 @@ export const SearchPage = ({
                 <img
                   src={video.externalThumbnail}
                   alt={video.title}
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    const nextSrc = getFallbackThumbnailUrl(event.currentTarget.src);
+                    if (nextSrc !== event.currentTarget.src) {
+                      event.currentTarget.src = nextSrc;
+                    }
+                  }}
                   className="w-full h-32 md:h-40 object-cover"
                 />
                 
@@ -138,10 +146,10 @@ export const SearchPage = ({
               </div>
               
               <div className="space-y-1">
-                <h4 className="font-semibold text-lg text-gray-800 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h4 className="font-semibold text-lg text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                   {video.title}
                 </h4>
-                <p className="text-sm text-gray-600 line-clamp-1">
+                <p className="text-sm text-muted-foreground line-clamp-1">
                   {video.category}
                 </p>
               </div>

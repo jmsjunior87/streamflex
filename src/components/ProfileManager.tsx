@@ -85,20 +85,20 @@ export const ProfileManager: React.FC<ProfileManagerProps> = ({ onProfileSelect 
   };
 
   const renderProfileForm = (profile: Omit<Profile, 'id'>, onSave: () => void, onCancel: () => void) => (
-    <div className="flex flex-col items-center space-y-4 p-6 bg-white rounded-3xl shadow-xl">
+    <div className="flex flex-col items-center space-y-4 p-6 bg-card text-card-foreground rounded-3xl shadow-xl">
       <input
         type="text"
         value={profile.name}
         onChange={(e) => setNewProfile({ ...profile, name: e.target.value })}
         placeholder="Nome do perfil"
-        className="w-full px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400"
+        className="w-full px-4 py-2 border border-border rounded-full bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue-400"
       />
       <div className="flex flex-wrap justify-center gap-2">
         {defaultAvatars.map((avatar) => (
           <button
             key={avatar}
             onClick={() => setNewProfile({ ...profile, avatar })}
-            className={`w-10 h-10 text-2xl rounded-full ${profile.avatar === avatar ? 'bg-blue-100 ring-2 ring-blue-400' : 'bg-gray-100'}`}
+            className={`w-10 h-10 text-2xl rounded-full ${profile.avatar === avatar ? 'bg-blue-100 ring-2 ring-blue-400 dark:bg-blue-950' : 'bg-muted'}`}
           >
             {avatar}
           </button>
@@ -116,7 +116,7 @@ export const ProfileManager: React.FC<ProfileManagerProps> = ({ onProfileSelect 
   );
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-background">
       <div className="text-center max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-8">
           Gerenciar Perfis
@@ -134,12 +134,12 @@ export const ProfileManager: React.FC<ProfileManagerProps> = ({ onProfileSelect 
               ) : (
                 <button
                   onClick={() => handleProfileClick(profile)}
-                  className="flex flex-col items-center space-y-4 p-6 rounded-3xl bg-white hover:shadow-xl transition-all transform hover:scale-105 w-full"
+                  className="flex flex-col items-center space-y-4 p-6 rounded-3xl bg-card text-card-foreground hover:shadow-xl transition-all transform hover:scale-105 w-full"
                 >
                   <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-4xl md:text-5xl shadow-lg">
                     {profile.avatar}
                   </div>
-                  <span className="text-xl md:text-2xl font-bold text-gray-800">
+                  <span className="text-xl md:text-2xl font-bold text-foreground">
                     {profile.name}
                   </span>
                 </button>
@@ -178,12 +178,12 @@ export const ProfileManager: React.FC<ProfileManagerProps> = ({ onProfileSelect 
           ) : (
             <button
               onClick={handleCreateProfile}
-              className="flex flex-col items-center justify-center space-y-4 p-6 rounded-3xl bg-white hover:shadow-xl transition-all transform hover:scale-105 border-2 border-dashed border-gray-300 hover:border-blue-400"
+              className="flex flex-col items-center justify-center space-y-4 p-6 rounded-3xl bg-card text-card-foreground hover:shadow-xl transition-all transform hover:scale-105 border-2 border-dashed border-border hover:border-blue-400"
             >
-              <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full flex items-center justify-center shadow-lg">
-                <Plus className="w-12 h-12 md:w-16 md:h-16 text-gray-600" />
+              <div className="w-24 h-24 md:w-32 md:h-32 bg-muted rounded-full flex items-center justify-center shadow-lg">
+              <Plus className="w-12 h-12 md:w-16 md:h-16 text-muted-foreground" />
               </div>
-              <span className="text-xl md:text-2xl font-bold text-gray-600">
+              <span className="text-xl md:text-2xl font-bold text-muted-foreground">
                 Criar Perfil
               </span>
             </button>

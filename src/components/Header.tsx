@@ -26,9 +26,10 @@ export const Header = ({
     <>
       {/* Desktop Header */}
       <header className="hidden md:flex items-center justify-between p-6 bg-background/80 backdrop-blur-sm shadow-sm sticky top-0 z-40 border-b">
-        <div className="flex items-center space-x-8">
+        <div className="flex items-center space-x-4">
+          <img src={`${import.meta.env.BASE_URL}streamflow-logo.svg`} alt="StreamFlow logo" className="h-12 w-12 rounded-2xl object-contain shadow-md ring-2 ring-blue-100 dark:ring-blue-900" />
           <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-            StreamFlex
+            StreamFlow
           </h1>
           
           <nav className="flex space-x-6">

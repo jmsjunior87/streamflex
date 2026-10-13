@@ -1,6 +1,7 @@
 
 import { Heart, Clock } from 'lucide-react';
 import { useRef } from 'react';
+import { getFallbackThumbnailUrl } from '@/lib/utils';
 
 interface Video {
   id: string;
@@ -42,14 +43,14 @@ export const CategoryCarousel = ({
 
   return (
     <div className="space-y-4">
-      <h3 className="text-2xl md:text-3xl font-bold text-gray-800 px-2">
+      <h3 className="text-2xl md:text-3xl font-bold text-foreground px-2">
         {title}
       </h3>
       
       <div className="relative">
         <button
           onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all md:block hidden"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/90 text-foreground border border-border hover:bg-accent p-3 rounded-full shadow-lg transition-all md:block hidden"
         >
           ←
         </button>
@@ -69,6 +70,13 @@ export const CategoryCarousel = ({
                 <img
                   src={video.externalThumbnail}
                   alt={video.title}
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    const nextSrc = getFallbackThumbnailUrl(event.currentTarget.src);
+                    if (nextSrc !== event.currentTarget.src) {
+                      event.currentTarget.src = nextSrc;
+                    }
+                  }}
                   className="w-full h-28 md:h-36 object-cover"
                 />
                 
@@ -101,10 +109,10 @@ export const CategoryCarousel = ({
               </div>
               
               <div className="p-3">
-                <h4 className="font-semibold text-lg text-gray-800 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h4 className="font-semibold text-lg text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                   {video.title}
                 </h4>
-                <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                   {video.description}
                 </p>
               </div>
@@ -114,7 +122,7 @@ export const CategoryCarousel = ({
         
         <button
           onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all md:block hidden"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/90 text-foreground border border-border hover:bg-accent p-3 rounded-full shadow-lg transition-all md:block hidden"
         >
           →
         </button>
