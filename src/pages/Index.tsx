@@ -13,203 +13,347 @@ import { Category } from '@/types/Category';
 
 const initialMockVideos: Video[] = [
     {
-      id: 'yt-IQqkFqUvuoI',
+      id: 'yt-QieuZpptjPA',
       title: 'Ação & Games',
-      externalThumbnail: 'https://img.youtube.com/vi/IQqkFqUvuoI/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/QieuZpptjPA/hqdefault.jpg',
       duration: '11.0:44.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=IQqkFqUvuoI',
-      youtubeId: 'IQqkFqUvuoI',
+      videoUrl: 'https://www.youtube.com/watch?v=QieuZpptjPA',
+      youtubeId: 'QieuZpptjPA',
   },
 
   {
-      id: 'yt-dhuptQESpkI',
+      id: 'yt-vs1hRYg5zoo',
       title: 'Morte de Principiante',
-      externalThumbnail: 'https://img.youtube.com/vi/dhuptQESpkI/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/vs1hRYg5zoo/hqdefault.jpg',
       duration: '11.0:44.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=dhuptQESpkI',
-      youtubeId: 'dhuptQESpkI',
+      videoUrl: 'https://www.youtube.com/watch?v=vs1hRYg5zoo',
+      youtubeId: 'vs1hRYg5zoo',
   },
 
   {
-      id: 'yt-BJOOP1-dFQY',
+      id: 'yt-rRcxA_1LYPw',
       title: 'Oswiral',
-      externalThumbnail: 'https://img.youtube.com/vi/BJOOP1-dFQY/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/rRcxA_1LYPw/hqdefault.jpg',
       duration: '11.0:44.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=BJOOP1-dFQY',
-      youtubeId: 'BJOOP1-dFQY',
+      videoUrl: 'https://www.youtube.com/watch?v=rRcxA_1LYPw',
+      youtubeId: 'rRcxA_1LYPw',
   },
 
   {
-      id: 'yt-bXVtJ-KEtQE',
+      id: 'yt-mgxMVqSx3Z0',
       title: 'A Última figurinha',
-      externalThumbnail: 'https://img.youtube.com/vi/bXVtJ-KEtQE/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/mgxMVqSx3Z0/hqdefault.jpg',
       duration: '11.0:44.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=bXVtJ-KEtQE',
-      youtubeId: 'bXVtJ-KEtQE',
+      videoUrl: 'https://www.youtube.com/watch?v=mgxMVqSx3Z0',
+      youtubeId: 'mgxMVqSx3Z0',
   },
 
   {
-      id: 'yt-MWmanSfxMiA',
+      id: 'yt-05tFBF2WrXM',
       title: 'O Melhor Amigo',
-      externalThumbnail: 'https://img.youtube.com/vi/MWmanSfxMiA/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/05tFBF2WrXM/hqdefault.jpg',
       duration: '11.0:44.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=MWmanSfxMiA',
-      youtubeId: 'MWmanSfxMiA',
+      videoUrl: 'https://www.youtube.com/watch?v=05tFBF2WrXM',
+      youtubeId: '05tFBF2WrXM',
   },
 
   {
-      id: 'yt-uwx4rOGkPgQ',
+      id: 'yt-3gto14hMKAw',
       title: 'O Método Oswaldo',
-      externalThumbnail: 'https://img.youtube.com/vi/uwx4rOGkPgQ/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/3gto14hMKAw/hqdefault.jpg',
       duration: '11.0:44.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=uwx4rOGkPgQ',
-      youtubeId: 'uwx4rOGkPgQ',
+      videoUrl: 'https://www.youtube.com/watch?v=3gto14hMKAw',
+      youtubeId: '3gto14hMKAw',
   },
 
   {
-      id: 'yt-PAxpMsGmVgw',
+      id: 'yt-N6PtADC05wk',
       title: 'O Picolé de PF',
-      externalThumbnail: 'https://img.youtube.com/vi/PAxpMsGmVgw/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/N6PtADC05wk/hqdefault.jpg',
       duration: '11.0:44.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=PAxpMsGmVgw',
-      youtubeId: 'PAxpMsGmVgw',
+      videoUrl: 'https://www.youtube.com/watch?v=N6PtADC05wk',
+      youtubeId: 'N6PtADC05wk',
   },
 
   {
-      id: 'yt-cLpSTWp9ENM',
+      id: 'yt-EywkYFSBbJo',
       title: 'Sobre Meninos e Bobos',
-      externalThumbnail: 'https://img.youtube.com/vi/cLpSTWp9ENM/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/EywkYFSBbJo/hqdefault.jpg',
       duration: '11.0:42.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=cLpSTWp9ENM',
-      youtubeId: 'cLpSTWp9ENM',
+      videoUrl: 'https://www.youtube.com/watch?v=EywkYFSBbJo',
+      youtubeId: 'EywkYFSBbJo',
   },
 
   {
-      id: 'yt-Po4DZKCCc1M',
+      id: 'yt-gEXLAbRjWps',
       title: 'Amigo Oculto',
-      externalThumbnail: 'https://img.youtube.com/vi/Po4DZKCCc1M/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/gEXLAbRjWps/hqdefault.jpg',
       duration: '11.0:42.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=Po4DZKCCc1M',
-      youtubeId: 'Po4DZKCCc1M',
+      videoUrl: 'https://www.youtube.com/watch?v=gEXLAbRjWps',
+      youtubeId: 'gEXLAbRjWps',
   },
 
   {
-      id: 'yt-28IYO9MImWw',
+      id: 'yt-a-XUkjkFbOA',
       title: 'A Feira Sci Fi',
-      externalThumbnail: 'https://img.youtube.com/vi/28IYO9MImWw/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/a-XUkjkFbOA/hqdefault.jpg',
       duration: '11.0:42.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=28IYO9MImWw',
-      youtubeId: '28IYO9MImWw',
+      videoUrl: 'https://www.youtube.com/watch?v=a-XUkjkFbOA',
+      youtubeId: 'a-XUkjkFbOA',
   },
 
   {
-      id: 'yt-WTCCMYRH1wM',
-      title: 'Oswladobias',
-      externalThumbnail: 'https://img.youtube.com/vi/WTCCMYRH1wM/hqdefault.jpg',
+      id: 'yt-st0GvBN9R6k',
+      title: 'Oswaldobias',
+      externalThumbnail: 'https://img.youtube.com/vi/st0GvBN9R6k/hqdefault.jpg',
       duration: '11.0:42.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=WTCCMYRH1wM',
-      youtubeId: 'WTCCMYRH1wM',
+      videoUrl: 'https://www.youtube.com/watch?v=st0GvBN9R6k',
+      youtubeId: 'st0GvBN9R6k',
   },
 
   {
-      id: 'yt-9U1nmB1fHNc',
+      id: 'yt-rbL2reC8ATQ',
       title: 'O livro jogo',
-      externalThumbnail: 'https://img.youtube.com/vi/9U1nmB1fHNc/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/rbL2reC8ATQ/hqdefault.jpg',
       duration: '11.0:42.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=9U1nmB1fHNc',
-      youtubeId: '9U1nmB1fHNc',
+      videoUrl: 'https://www.youtube.com/watch?v=rbL2reC8ATQ',
+      youtubeId: 'rbL2reC8ATQ',
   },
 
   {
-      id: 'yt-y_CmoHCKJZU',
+      id: 'yt-svvaHOpYhEg',
       title: 'Me pego lá fora',
-      externalThumbnail: 'https://img.youtube.com/vi/y_CmoHCKJZU/hqdefault.jpg',
+      externalThumbnail: 'https://img.youtube.com/vi/svvaHOpYhEg/hqdefault.jpg',
       duration: '11.0:42.0',
       ageRating: 'L',
       categoryId: 'Oswaldo',
-      subcategoryId: 'Temporada 1',
+      subcategoryId: 'Oswaldo - Temporada 1',
       category: 'Oswaldo',
       description: '',
-      videoUrl: 'https://www.youtube.com/watch?v=y_CmoHCKJZU',
-      youtubeId: 'y_CmoHCKJZU',
-  }
+      videoUrl: 'https://www.youtube.com/watch?v=svvaHOpYhEg',
+      youtubeId: 'svvaHOpYhEg',
+  },
+
+  {
+    id: 'yt-ESBrCCqP-nE',
+    title: 'O Incrível Circo Digital S01E01 WEB DL 1080p x264 DUAL 2 0',
+    externalThumbnail: 'https://img.youtube.com/vi/ESBrCCqP-nE/hqdefault.jpg',
+    duration: '27.0:4.0',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=ESBrCCqP-nE',
+    youtubeId: 'ESBrCCqP-nE',
+},
+
+{
+    id: 'yt-dgStYZcW7Ec',
+    title: 'O Incrível Circo Digital S01E02 WEB DL 1080p x264 DUAL 2 0',
+    externalThumbnail: 'https://img.youtube.com/vi/dgStYZcW7Ec/hqdefault.jpg',
+    duration: '26.0:59.0',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=dgStYZcW7Ec',
+    youtubeId: 'dgStYZcW7Ec',
+},
+
+{
+    id: 'yt-k6mrpEXRwgM',
+    title: 'O Incrível Circo Digital S01E03 WEB DL 1080p x264 DUAL 2 0',
+    externalThumbnail: 'https://img.youtube.com/vi/k6mrpEXRwgM/hqdefault.jpg',
+    duration: '26.0:4.0',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=k6mrpEXRwgM',
+    youtubeId: 'k6mrpEXRwgM',
+},
+
+{
+    id: 'yt-WUTnc__K-Fc',
+    title: 'O Incrível Circo Digital S01E04 WEB DL 1080p x264 DUAL 2 0',
+    externalThumbnail: 'https://img.youtube.com/vi/WUTnc__K-Fc/hqdefault.jpg',
+    duration: '25.0:14.0',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=WUTnc__K-Fc',
+    youtubeId: 'WUTnc__K-Fc',
+},
+
+{
+    id: 'yt-KKaWVnEoFTs',
+    title: 'O Incrível Circo Digital S01E05 WEB DL 1080p x264 DUAL 2 0',
+    externalThumbnail: 'https://img.youtube.com/vi/KKaWVnEoFTs/hqdefault.jpg',
+    duration: '27.0:11.0',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=KKaWVnEoFTs',
+    youtubeId: 'KKaWVnEoFTs',
+},
+
+{
+    id: 'yt-hiWg5iIrAuQ',
+    title: 'O Incrível Circo Digital S01E06 WEB DL 1080p x264 DUAL 2 0',
+    externalThumbnail: 'https://img.youtube.com/vi/hiWg5iIrAuQ/hqdefault.jpg',
+    duration: '35.0:36.0',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=hiWg5iIrAuQ',
+    youtubeId: 'hiWg5iIrAuQ',
+},
+
+{
+    id: 'yt-9wnVGj15oGU',
+    title: 'O Incrível Circo Digital S01E07 WEB DL 1080p x264 DUAL 2 0',
+    externalThumbnail: 'https://img.youtube.com/vi/9wnVGj15oGU/hqdefault.jpg',
+    duration: '34.0:44.0',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=9wnVGj15oGU',
+    youtubeId: '9wnVGj15oGU',
+},
+
+{
+    id: 'yt-KJDv-nMIs3Y',
+    title: '',
+    externalThumbnail: 'https://img.youtube.com/vi/KJDv-nMIs3Y/hqdefault.jpg',
+    duration: '0:00',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=KJDv-nMIs3Y',
+    youtubeId: 'KJDv-nMIs3Y',
+},
+
+{
+    id: 'yt-wcXToDtLYNk',
+    title: '',
+    externalThumbnail: 'https://img.youtube.com/vi/wcXToDtLYNk/hqdefault.jpg',
+    duration: '0:00',
+    ageRating: '12',
+    categoryId: 'O Incrível Circo Digital',
+    subcategoryId: 'O Incrível Circo Digital - Temporada 1',
+    category: 'O Incrível Circo Digital',
+    description: '',
+    videoUrl: 'https://www.youtube.com/watch?v=wcXToDtLYNk',
+    youtubeId: 'wcXToDtLYNk',
+},
+
+
+
+
 ];
 
 const CATEGORIES: Category[] = [
   { id: 'Oswaldo', name: 'Oswaldo' },
-  { id: 'Temporada 1', name: 'Temporada 1', parentId: 'Oswaldo' },
+  { id: 'Oswaldo - Temporada 1', name: 'Oswaldo - Temporada 1', parentId: 'Oswaldo' },
+  { id: 'O Incrível Circo Digital', name: 'O Incrível Circo Digital' },
+  {
+    id: 'O Incrível Circo Digital - Temporada 1',
+    name: 'O Incrível Circo Digital - Temporada 1',
+    parentId: 'O Incrível Circo Digital',
+  },
 ];
 
 const CATEGORY_COVER_IMAGES: Record<string, string> = {
   Oswaldo: 'https://drive.google.com/thumbnail?id=1-5_QOaTvVnE2-WBroFaYdBNV04di5VSt&sz=w1600',
+  'O Incrível Circo Digital': 'https://drive.google.com/thumbnail?id=1UUcInQSKYAQNfKqTmcfiBjqxauocZHr6&sz=w1600',
 };
 
 const SERIES_HERO_IMAGES: Record<string, string> = {
   Oswaldo: 'https://drive.google.com/thumbnail?id=1GGr5aBkqasMKH5h1JDHuSANzTC27Ps7Z&sz=w1600',
+  'O Incrível Circo Digital': 'https://drive.google.com/thumbnail?id=1A7bYFqgncJtL83BnsPZ8VnRNG6nLBC1i&sz=w1600',
 };
 
 const CATEGORY_LOGOS: Record<string, string> = {
   Oswaldo: 'https://drive.google.com/thumbnail?id=159TFW1Lub9nqMFDU_ZQR_Q9iu6FQCVdO&sz=w800',
+  'O Incrível Circo Digital': 'https://drive.google.com/thumbnail?id=1cM73JzJYpw7-hVBEqW--A5NpQpSbm-uD&sz=w800',
+};
+
+const SERIES_DESCRIPTIONS: Record<string, string> = {
+  Oswaldo: 'Oswaldo é um pinguim em idade escolar, adotado e criado por pais humanos, que enfrenta seu maior desafio: sobreviver à escola. Viciado em cultura pop, ele conta com os melhores amigos Tobias e Leia para encarar professores rígidos, jogos de RPG que dão errado e projetos de ciências fora de controle.',
+  'O Incrível Circo Digital': 'Pomni coloca um headset de realidade virtual e acorda presa em um circo digital, junto de outros jogadores que também não conseguem sair. Comandados por Caine, o apresentador, eles vivem aventuras malucas e coloridas enquanto tentam descobrir uma saída. Quanto mais o tempo passa, mais difícil fica manter a sanidade.',
 };
 
 const extractPlaylistId = (value: string) => {
@@ -278,6 +422,7 @@ const Index = () => {
   const [currentPlaylist, setCurrentPlaylist] = useState<Video[]>([]);
 
   const topCategories = CATEGORIES.filter(c => !c.parentId);
+  const featuredVideo = mockVideos.find(v => v.categoryId === 'O Incrível Circo Digital') ?? mockVideos[0];
   const subcategories = selectedCategoryId
     ? CATEGORIES.filter(c => c.parentId === selectedCategoryId)
     : [];
@@ -379,12 +524,14 @@ const Index = () => {
                 <>
                   {!selectedCategoryId ? (
                     <>
-                      {mockVideos[0] && (
+                      {featuredVideo && (
                         <FeaturedBanner
-                          video={mockVideos[0]}
-                          onPlay={() => handleVideoSelect(mockVideos[0])}
-                          isFavorite={favorites.includes(mockVideos[0].id)}
-                          onToggleFavorite={() => toggleFavorite(mockVideos[0].id)}
+                          video={featuredVideo}
+                          onPlay={() => handleVideoSelect(featuredVideo)}
+                          isFavorite={favorites.includes(featuredVideo.id)}
+                          onToggleFavorite={() => toggleFavorite(featuredVideo.id)}
+                          image={CATEGORY_COVER_IMAGES['O Incrível Circo Digital']}
+                          logo={CATEGORY_LOGOS['O Incrível Circo Digital']}
                         />
                       )}
                       {topCategories.length > 0 ? (
@@ -502,21 +649,23 @@ const Index = () => {
                       <section className="mx-4 mb-8 overflow-hidden rounded-3xl border border-border bg-card shadow-sm md:mx-8">
                         <div className="grid md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
                           <img
-                            src={SERIES_HERO_IMAGES[selectedCategoryId] ?? CATEGORY_COVER_IMAGES.Oswaldo}
-                            alt="Oswaldo"
+                            src={SERIES_HERO_IMAGES[selectedCategoryId] ?? getCoverForCategoryOrSubcategory(selectedCategoryId)}
+                            alt={CATEGORIES.find(c => c.id === selectedCategoryId)?.name ?? selectedCategoryId}
                             className="aspect-[16/9] h-full w-full object-cover md:aspect-auto md:min-h-64"
                           />
                           <div className="flex flex-col justify-center p-6 md:p-8">
                             {CATEGORY_LOGOS[selectedCategoryId] && (
                               <img
                                 src={CATEGORY_LOGOS[selectedCategoryId]}
-                                alt="Oswaldo"
+                                alt={CATEGORIES.find(c => c.id === selectedCategoryId)?.name ?? selectedCategoryId}
                                 className="mb-4 h-auto max-h-20 max-w-72 object-contain object-left"
                               />
                             )}
-                            <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-                              Oswaldo é um pinguim em idade escolar, adotado e criado por pais humanos, que enfrenta seu maior desafio: sobreviver à escola. Viciado em cultura pop, ele conta com os melhores amigos Tobias e Leia para encarar professores rígidos, jogos de RPG que dão errado e projetos de ciências fora de controle.
-                            </p>
+                            {SERIES_DESCRIPTIONS[selectedCategoryId] && (
+                              <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+                                {SERIES_DESCRIPTIONS[selectedCategoryId]}
+                              </p>
+                            )}
                           </div>
                         </div>
                       </section>

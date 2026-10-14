@@ -1,7 +1,7 @@
 
 import { Play, Heart } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { getFallbackThumbnailUrl } from '@/lib/utils';
+import { getAgeRatingClassName, getFallbackThumbnailUrl } from '@/lib/utils';
 
 interface Video {
   id: string;
@@ -19,14 +19,16 @@ interface FeaturedBannerProps {
   onPlay: () => void;
   isFavorite: boolean;
   onToggleFavorite: () => void;
+  image?: string;
+  logo?: string;
 }
 
-export const FeaturedBanner = ({ video, onPlay, isFavorite, onToggleFavorite }: FeaturedBannerProps) => {
-  const [thumbnail, setThumbnail] = useState(video.externalThumbnail);
+export const FeaturedBanner = ({ video, onPlay, isFavorite, onToggleFavorite, image, logo }: FeaturedBannerProps) => {
+  const [thumbnail, setThumbnail] = useState(image ?? video.externalThumbnail);
 
   useEffect(() => {
-    setThumbnail(video.externalThumbnail);
-  }, [video.externalThumbnail]);
+    setThumbnail(image ?? video.externalThumbnail);
+  }, [image, video.externalThumbnail]);
 
   const handleThumbnailError = () => {
     setThumbnail((current) => {
@@ -61,19 +63,25 @@ export const FeaturedBanner = ({ video, onPlay, isFavorite, onToggleFavorite }: 
             <span className="px-3 py-1 bg-blue-500 rounded-full text-sm font-semibold">
               {video.category}
             </span>
-            <span className="px-3 py-1 bg-green-500 rounded-full text-sm font-semibold">
+            <span className={`px-3 py-1 ${getAgeRatingClassName(video.ageRating)} rounded-full text-sm font-semibold`}>
               {video.ageRating}
             </span>
             <span className="text-sm opacity-90">{video.duration}</span>
           </div>
           
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-            {video.title}
-          </h2>
+          {logo ? (
+            <img src={logo} alt={video.category} className="mb-4 max-h-20 max-w-72 object-contain object-left" />
+          ) : (
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+              {video.title}
+            </h2>
+          )}
           
-          <p className="text-lg md:text-xl opacity-90 mb-8 leading-relaxed">
-            {video.description}
-          </p>
+          {video.description && (
+            <p className="text-lg md:text-xl opacity-90 mb-8 leading-relaxed">
+              {video.description}
+            </p>
+          )}
           
           <div className="flex items-center space-x-4">
             <button

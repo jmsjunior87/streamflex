@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Heart, Clock, Search } from 'lucide-react';
-import { getFallbackThumbnailUrl } from '@/lib/utils';
+import { getAgeRatingClassName, getFallbackThumbnailUrl } from '@/lib/utils';
 
 interface Video {
   id: string;
@@ -139,7 +139,7 @@ export const SearchPage = ({
                 </div>
                 
                 <div className="absolute bottom-2 right-2 text-white text-xs">
-                  <span className="bg-green-500 px-2 py-1 rounded-full">
+                  <span className={`${getAgeRatingClassName(video.ageRating)} px-2 py-1 rounded-full`}>
                     {video.ageRating}
                   </span>
                 </div>

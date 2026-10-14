@@ -132,6 +132,8 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const youtubeProgressIntervalRef = useRef<number | null>(null);
   const ageRatingTimeoutRef = useRef<number | null>(null);
   const ageRatingShownForVideoRef = useRef(false);
+  const backButtonTimeoutRef = useRef<number | null>(null);
+  const videoEndedRef = useRef(false);
 
   // Mantemos a referência de objeto de URL apenas para vídeos locais, se necessário.
   const hlsRef = useRef<any>(null);
@@ -155,6 +157,24 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [nextEpisodeCountdown, setNextEpisodeCountdown] = useState<number | null>(null);
   const [showAgeRating, setShowAgeRating] = useState(false);
+  const [showBackButton, setShowBackButton] = useState(true);
+
+  const scheduleBackButtonHide = useCallback(() => {
+    if (backButtonTimeoutRef.current !== null) {
+      window.clearTimeout(backButtonTimeoutRef.current);
+    }
+    if (videoEndedRef.current) return;
+
+    backButtonTimeoutRef.current = window.setTimeout(() => {
+      setShowBackButton(false);
+      backButtonTimeoutRef.current = null;
+    }, 3000);
+  }, []);
+
+  const revealBackButton = useCallback(() => {
+    setShowBackButton(true);
+    scheduleBackButtonHide();
+  }, [scheduleBackButtonHide]);
 
   const showAgeRatingOnStart = useCallback(() => {
     if (ageRatingShownForVideoRef.current) return;
@@ -191,6 +211,13 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
   }, [clearNextEpisodeCountdown]);
 
   const handleEpisodeEnded = useCallback(() => {
+    videoEndedRef.current = true;
+    setShowBackButton(true);
+    if (backButtonTimeoutRef.current !== null) {
+      window.clearTimeout(backButtonTimeoutRef.current);
+      backButtonTimeoutRef.current = null;
+    }
+
     const shouldAdvance = hasNextEpisodeRef.current && !nextEpisodeCancelledRef.current;
     nextEpisodeCancelledRef.current = true;
     clearNextEpisodeCountdown();
@@ -203,6 +230,19 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     clearNextEpisodeCountdown();
     onEndedRef.current?.();
   }, [clearNextEpisodeCountdown]);
+
+  useEffect(() => {
+    videoEndedRef.current = false;
+    setShowBackButton(true);
+    scheduleBackButtonHide();
+
+    return () => {
+      if (backButtonTimeoutRef.current !== null) {
+        window.clearTimeout(backButtonTimeoutRef.current);
+        backButtonTimeoutRef.current = null;
+      }
+    };
+  }, [scheduleBackButtonHide, video.id]);
 
   useEffect(() => {
     nextEpisodeCancelledRef.current = false;
@@ -270,6 +310,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
                 handleEpisodeEnded();
               } else if (event.data === api.PlayerState.PLAYING) {
                 setIsPlaying(true);
+                revealBackButton();
                 setLoading(false);
                 showAgeRatingOnStart();
                 if (youtubeProgressIntervalRef.current !== null) {
@@ -315,7 +356,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       activeYoutubeIdRef.current = null;
       youtubeContainerRef.current?.replaceChildren();
     };
-  }, [handleEpisodeEnded, isYouTubeVideo, showAgeRatingOnStart, updateNextEpisodeCountdown]);
+  }, [handleEpisodeEnded, isYouTubeVideo, revealBackButton, showAgeRatingOnStart, updateNextEpisodeCountdown]);
 
   useEffect(() => {
     if (!isYouTubeVideo || !youtubeId || !youtubePlayerRef.current || activeYoutubeIdRef.current === youtubeId) return;
@@ -346,6 +387,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     };
     const onPlay = () => {
       setIsPlaying(true);
+      revealBackButton();
       showAgeRatingOnStart();
     };
     const onPause = () => setIsPlaying(false);
@@ -371,7 +413,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
       el.removeEventListener('ended', onEndedEvent);
       el.removeEventListener('error', onError);
     };
-  }, [handleEpisodeEnded, isYouTubeVideo, showAgeRatingOnStart, updateNextEpisodeCountdown, video]);
+  }, [handleEpisodeEnded, isYouTubeVideo, revealBackButton, showAgeRatingOnStart, updateNextEpisodeCountdown, video]);
 
   // Carregamento da fonte do vídeo
   useEffect(() => {
@@ -510,6 +552,7 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
     <div
       ref={containerRef}
       className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 overflow-hidden"
+      onMouseMove={revealBackButton}
     >
       <div className={`relative w-full`}>
         <div
@@ -631,7 +674,11 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
         onClick={onClose}
         aria-label="Voltar"
         title="Voltar"
-        className="absolute top-4 left-4 text-white bg-black bg-opacity-70 p-3 rounded-full shadow-lg"
+        onFocus={revealBackButton}
+        onBlur={scheduleBackButtonHide}
+        className={`absolute top-4 left-4 text-white bg-black bg-opacity-70 p-3 rounded-full shadow-lg transition-opacity duration-300 ${
+          showBackButton ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
         style={{ zIndex: 9999 }}
       >
         <ArrowLeft size={18} />
@@ -661,7 +708,11 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({
           <div
             role="status"
             aria-live="polite"
-            className="rounded-lg border border-green-300 bg-green-700 px-4 py-3 text-sm font-medium text-white shadow-lg"
+            className={`rounded-lg border px-4 py-3 text-sm font-medium text-white shadow-lg ${
+              video.ageRating === '12'
+                ? 'border-yellow-300 bg-yellow-600'
+                : 'border-green-300 bg-green-700'
+            }`}
           >
             Classificação indicativa: <span className="font-bold">{video.ageRating}</span>
           </div>

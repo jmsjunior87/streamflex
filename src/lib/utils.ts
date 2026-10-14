@@ -21,6 +21,10 @@ export function getFallbackThumbnailUrl(url: string) {
   return url.replace(youtubeThumbnailFallbacks[index], youtubeThumbnailFallbacks[index + 1])
 }
 
+export function getAgeRatingClassName(ageRating: string) {
+  return ageRating === "12" ? "bg-yellow-500" : "bg-green-500"
+}
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
