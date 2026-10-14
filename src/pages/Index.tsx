@@ -429,14 +429,14 @@ const Index = () => {
   const selectedSubcategory = selectedSubcategoryId
     ? CATEGORIES.find(c => c.id === selectedSubcategoryId) ?? null
     : null;
-  const subcategoryVideos = selectedSubcategoryId
+  const episodeVideos = selectedSubcategoryId
     ? mockVideos.filter(v => v.subcategoryId === selectedSubcategoryId)
+    : selectedCategoryId
+      ? mockVideos.filter(v => v.categoryId === selectedCategoryId)
     : [];
   const activePlaylist = currentPlaylist.length
     ? currentPlaylist
-    : selectedSubcategoryId
-      ? mockVideos.filter(v => v.subcategoryId === selectedSubcategoryId)
-      : [];
+    : episodeVideos;
   const selectedVideoIndex = selectedVideo
     ? activePlaylist.findIndex(v => v.id === selectedVideo.id)
     : -1;
@@ -459,8 +459,14 @@ const Index = () => {
   };
 
   const handleCategorySelect = (categoryId: string) => {
+    const firstSubcategory = CATEGORIES.find(c => c.parentId === categoryId);
+    const videos = firstSubcategory
+      ? mockVideos.filter(v => v.subcategoryId === firstSubcategory.id)
+      : mockVideos.filter(v => v.categoryId === categoryId);
+
     setSelectedCategoryId(categoryId);
-    setSelectedSubcategoryId(null);
+    setSelectedSubcategoryId(firstSubcategory?.id ?? null);
+    setCurrentPlaylist(videos);
     setSelectedVideo(null);
   };
 
@@ -585,7 +591,7 @@ const Index = () => {
                         </div>
                       )}
                     </>
-                  ) : !selectedSubcategoryId ? (
+                  ) : !selectedSubcategoryId && subcategories.length > 0 ? (
                     <div className="px-4 md:px-8">
                       <button
                         onClick={() => setSelectedCategoryId(null)}
@@ -672,19 +678,25 @@ const Index = () => {
                       <div className="px-4 md:px-8 mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                         <div>
                           <button
-                            onClick={() => setSelectedSubcategoryId(null)}
+                            onClick={() => {
+                              setSelectedCategoryId(null);
+                              setSelectedSubcategoryId(null);
+                              setCurrentPlaylist([]);
+                            }}
                             className="text-sm text-blue-600 hover:underline dark:text-blue-400"
                           >
-                            ← Voltar para subcategorias
+                            ← Voltar para categorias
                           </button>
-                          <h2 className="text-2xl font-bold mt-3">{selectedSubcategory?.name}</h2>
+                          <h2 className="text-2xl font-bold mt-3">
+                            {selectedSubcategory?.name ?? CATEGORIES.find(c => c.id === selectedCategoryId)?.name}
+                          </h2>
                           <p className="text-sm text-muted-foreground">
-                            {subcategoryVideos.length} episódio{subcategoryVideos.length !== 1 ? 's' : ''}
+                            {episodeVideos.length} episódio{episodeVideos.length !== 1 ? 's' : ''}
                           </p>
                         </div>
-                        {subcategoryVideos[0] && (
+                        {episodeVideos[0] && (
                           <button
-                            onClick={() => handleVideoSelect(subcategoryVideos[0])}
+                            onClick={() => handleVideoSelect(episodeVideos[0])}
                             className="rounded-full bg-blue-600 px-5 py-3 text-white shadow hover:bg-blue-700 transition"
                           >
                             Assistir primeiro episódio
@@ -695,7 +707,7 @@ const Index = () => {
                       <div className="px-4 md:px-8 space-y-12">
                         <CategoryCarousel
                           title="Episódios"
-                          videos={subcategoryVideos}
+                          videos={episodeVideos}
                           onVideoSelect={handleVideoSelect}
                           favorites={favorites}
                           onToggleFavorite={toggleFavorite}
